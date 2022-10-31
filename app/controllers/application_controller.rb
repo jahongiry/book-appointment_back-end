@@ -23,8 +23,8 @@ class ApplicationController < ActionController::API
 
   def current_user
     User.find_by(id: user_id)
-    rescue ActiveRecord::RecordNotFound
-      render json: { errors: 'User not found' }, status: :not_found
+  rescue ActiveRecord::RecordNotFound
+    render json: { errors: 'User not found' }, status: :not_found
   end
 
   def logged_in?

@@ -10,6 +10,7 @@ class API::V1::CarsController < ApplicationController
   def show_car
     car = Car.find(params[:id])
     raise ActiveRecord::RecordNotFound unless car
+
     render json: car, each_serializer: CarSerializer
   end
 
@@ -27,9 +28,7 @@ class API::V1::CarsController < ApplicationController
   private
 
   def authorize_request
-    unless current_user
-        render json: { errors: 'User not authorised, please sign in' }, status: :unauthorized
-    end
+    render json: { errors: 'User not authorised, please sign in' }, status: :unauthorized unless current_user
   end
 
   def cars_params
