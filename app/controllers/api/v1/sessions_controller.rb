@@ -1,11 +1,11 @@
 class API::V1::SessionsController < ApplicationController
   def create
-    user = User.find_by_email(sessions_params[:email])
+    user = User.find_by_username(sessions_params[:username])
     if user
       token = issue_token(user)
       render json: { user: UserSerializer.new(user), jwt: token }
     else
-      render json: { error: 'Incorrect email' }, status: :unauthorized
+      render json: { error: 'Incorrect username' }, status: :unauthorized
     end
   end
 
