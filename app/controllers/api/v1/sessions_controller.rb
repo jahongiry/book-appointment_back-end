@@ -20,6 +20,6 @@ class API::V1::SessionsController < ApplicationController
   private
 
   def sessions_params
-    params.permit(:email)
+    params.permit(:username)
   end
 end
