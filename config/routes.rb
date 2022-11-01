@@ -8,7 +8,7 @@ Rails.application.routes.draw do
                   post "/add_car", to: "cars#add_car"
                   get "/show_car", to: "cars#show_car"
                   delete "/cars/:id", to:"cars#destroy"
-                  # resources :cars, only: [:destroy]
+                  
             end
       end
 end
