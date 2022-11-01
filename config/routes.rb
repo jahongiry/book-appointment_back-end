@@ -4,6 +4,9 @@ Rails.application.routes.draw do
                   post "/signup", to: "users#create"
                   post "/signin", to: "sessions#create"
                   get "/authorized", to: "sessions#show"
+                  get "/all_cars", to: "cars#all_cars"
+                  post "/add_car", to: "cars#add_car"
+                  get "/show_car", to: "cars#show_car"
             end
       end
 end
