@@ -24,7 +24,16 @@ class API::V1::CarsController < ApplicationController
       render json: { error: 'Bad Request' }, status: :not_acceptable
     end
   end
-
+  
+  # delete a car item from list
+  def destroy
+    car = Car.find(params[:id])
+  if car.destroy
+    render json: { message: 'Car deleted successfully'}, status: :ok
+  else 
+    render json: { head: unprocessable_entity}
+  end
+  end
   private
 
   def authorize_request
