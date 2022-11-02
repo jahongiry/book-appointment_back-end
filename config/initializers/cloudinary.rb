@@ -1,7 +1,7 @@
 Cloudinary.config do |config| 
-    config.cloud_name = "nottherealalanturing"
-    config.api_key = "734883444138147"
-    config.api_secret = "tijjewUxjB5Hk1A9fm6cL3F-2jY"
+    config.cloud_name = Rails.application.credentials.cloudinary[:cloud_name]
+    config.api_key = Rails.application.credentials.cloudinary[:api_key]
+    config.api_secret = Rails.application.credentials.cloudinary[:api_secret]
     config.secure = true 
     config.cdn_subdomain = true
 end
