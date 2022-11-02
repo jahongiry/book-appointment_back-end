@@ -1,5 +1,4 @@
 class Car < ApplicationRecord
-
   has_one_attached :image
   has_many :reservations
   has_many :users, through: :reservations
@@ -9,6 +8,4 @@ class Car < ApplicationRecord
   validates :cost, presence: true, numericality: { only_integer: true }
   validates :description, presence: true
   validates :owner, presence: true
-  
-
 end
