@@ -16,8 +16,11 @@ class API::V1::CarsController < ApplicationController
 
   # create a new car item
   def add_car
+    image_url = Cloudinary::Uploader.upload(params[:image])
     car = Car.new(cars_params)
     car.owner = current_user.username
+    car.image_url = image_url['url']
+
     if car.save
       render json: car, each_serializer: CarSerializer
     else
