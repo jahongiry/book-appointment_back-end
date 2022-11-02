@@ -5,4 +5,11 @@ class Reservation < ApplicationRecord
   validates :user_id, presence: true
   validates :car_id, presence: true
   validates :location, presence: true
+  
+  scope :expired, ->{ where("reservation_date < ?", Date.today) }
+  
+
+  def self.remove_expired
+    Reservation.expired.delete_all
+  end
 end

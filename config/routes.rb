@@ -9,6 +9,7 @@ Rails.application.routes.draw do
                   get "/show_car", to: "cars#show_car"
                   post "/add_reservation", to: "reservations#add_reservation"
                   get "/my_reservations", to: "reservations#my_reservations"
+                  delete "/cars/:id", to:"cars#destroy"
             end
       end
 end
