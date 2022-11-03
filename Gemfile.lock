@@ -79,6 +79,7 @@ GEM
     builder (3.2.4)
     case_transform (0.2)
       activesupport
+    chronic (0.10.2)
     cloudinary (1.23.0)
       aws_cf_signer
       rest-client (>= 2.0.0)
@@ -91,6 +92,7 @@ GEM
       unf (>= 0.0.5, < 1.0.0)
     erubi (1.11.0)
     ffi (1.15.5)
+    ffi (1.15.5-x64-mingw-ucrt)
     globalid (1.0.0)
       activesupport (>= 5.0)
     http-accept (1.7.0)
@@ -209,10 +211,13 @@ GEM
     unf (0.1.4)
       unf_ext
     unf_ext (0.0.8.2)
+    unf_ext (0.0.8.2-x64-mingw-ucrt)
     unicode-display_width (2.3.0)
     websocket-driver (0.7.5)
       websocket-extensions (>= 0.1.0)
     websocket-extensions (0.1.5)
+    whenever (1.0.0)
+      chronic (>= 0.6.3)
     zeitwerk (2.6.1)
 
 PLATFORMS
@@ -233,6 +238,7 @@ DEPENDENCIES
   rails (~> 7.0.4)
   rubocop (>= 1.0, < 2.0)
   tzinfo-data
+  whenever
 
 RUBY VERSION
    ruby 3.1.2p20
