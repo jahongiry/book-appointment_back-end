@@ -25,6 +25,12 @@ class API::V1::ReservationsController < ApplicationController
     render json: current_user.reservations, each_serializer: ReservationSerializer
   end
 
+  def destroy
+    reservation = Reservation.find(params[:id])
+    reservation.destroy
+    render json: { message: 'Reservation deleted' }
+  end
+
   private
 
   def already_reserved(parsed_date)
@@ -40,6 +46,6 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.permit(:user_id, :car_id, :location, :reservation_date, :model)
+    params.permit(:user_id, :car_id, :location, :reservation_date)
   end
 end
