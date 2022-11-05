@@ -3,10 +3,9 @@ class API::V1::ReservationsController < ApplicationController
 
   # add a reservation
   def add_reservation
-    car = Car.where(id: reservation_params[:car_id]).first
     parsed_date = Date.parse(reservation_params[:reservation_date])
 
-    if already_reserved parsed_date
+    if already_reserved(parsed_date, reservation_params[:car_id])
       render json: { errors: 'Already reserved' }, status: :not_found
     else
       new_reservation = Reservation.new(location: reservation_params[:location],
@@ -34,9 +33,9 @@ class API::V1::ReservationsController < ApplicationController
 
   private
 
-  def already_reserved(parsed_date)
+  def already_reserved(parsed_date, car_id)
     reserved = Reservation.where(location: reservation_params[:location],
-                                 reservation_date: parsed_date).first
+                                 reservation_date: parsed_date, car_id: car_id).first
     return false if reserved.blank?
 
     true
