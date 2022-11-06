@@ -35,7 +35,7 @@ class API::V1::ReservationsController < ApplicationController
 
   def already_reserved(parsed_date, car_id)
     reserved = Reservation.where(location: reservation_params[:location],
-                                 reservation_date: parsed_date, car_id: car_id).first
+                                 reservation_date: parsed_date, car_id:).first
     return false if reserved.blank?
 
     true
