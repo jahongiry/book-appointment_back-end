@@ -18,7 +18,7 @@ class API::V1::CarsController < ApplicationController
   def add_car
     image_url = Cloudinary::Uploader.upload(params[:image])
     car = Car.new(cars_params)
-    car.owner = current_user.username
+    car.owner = User.find(params[:owner_id])
     car.image_url = image_url['url']
 
     if car.save
