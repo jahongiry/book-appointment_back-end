@@ -1,5 +1,5 @@
 class API::V1::ReservationsController < ApplicationController
-  before_action :authorize_request, only: %i[my_reservations, add_reservation, destroy]
+  before_action :authorize_request, only: %i[my_reservations add_reservation destroy]
 
   # add a reservation
   def add_reservation
