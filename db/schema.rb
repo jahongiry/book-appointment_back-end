@@ -48,8 +48,10 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_145502) do
     t.text "description", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "owner"
+    t.string "owner"
+    t.string "model"
     t.string "image_url", null: false
+    t.index ["model"], name: "index_cars_on_model", unique: true
   end
 
   create_table "reservations", force: :cascade do |t|
@@ -59,6 +61,7 @@ ActiveRecord::Schema[7.0].define(version: 2022_11_02_145502) do
     t.datetime "reservation_date", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "model", null: false
     t.index ["car_id"], name: "index_reservations_on_car_id"
     t.index ["reservation_date"], name: "index_reservations_on_reservation_date", unique: true
     t.index ["user_id"], name: "index_reservations_on_user_id"

@@ -1,4 +1,6 @@
 class API::V1::CarsController < ApplicationController
+  before_action :authorize_request, only: %i[add_car destroy]
+
   # list all cars
   def all_cars
     render json: Car.all.order(id: :desc), each_serializer: CarSerializer
@@ -16,7 +18,7 @@ class API::V1::CarsController < ApplicationController
   def add_car
     image_url = Cloudinary::Uploader.upload(params[:image])
     car = Car.new(cars_params)
-    car.owner = current_user.id
+    car.owner = current_user.username
     car.image_url = image_url['url']
 
     if car.save
@@ -38,7 +40,11 @@ class API::V1::CarsController < ApplicationController
 
   private
 
+  def authorize_request
+    render json: { errors: 'User not authorised, please sign in' }, status: :unauthorized unless current_user
+  end
+
   def cars_params
-    params.permit(:name, :cost, :owner, :description, :image_url, :model, :image)
+    params.permit(:name, :cost, :description, :image, :model)
   end
 end
