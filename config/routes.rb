@@ -8,10 +8,10 @@ Rails.application.routes.draw do
                   get "/authorized", to: "sessions#show"
                   get "/all_cars", to: "cars#all_cars"
                   post "/add_car", to: "cars#add_car"
-                  get "/show_car", to: "cars#show_car"
+                  get "/show_car/:id", to: "cars#show_car"
+                  post "/add_reservation", to: "reservations#add_reservation"
+                  get "/:user_id/my_reservations", to: "reservations#my_reservations"
                   delete "/cars/:id", to:"cars#destroy"
-                  
-                  
             end
       end
 end
