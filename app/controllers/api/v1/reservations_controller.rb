@@ -1,18 +1,18 @@
 class API::V1::ReservationsController < ApplicationController
-  before_action :authorize_request, only: %i[add_reservation my_reservations]
+  before_action :authorize_request, only: %i[my_reservations]
 
   # add a reservation
   def add_reservation
-    car = Car.where(model: reservation_params[:model], id: reservation_params[:car_id]).first
+    car = Car.where(id: reservation_params[:car_id]).first
     parsed_date = Date.parse(reservation_params[:reservation_date])
 
     if already_reserved parsed_date
       render json: { errors: 'Already reserved' }, status: :not_found
     else
-      new_reservation = current_user.reservations.new(location: reservation_params[:location],
-                                                      reservation_date: parsed_date, model: reservation_params[:model])
-      new_reservation.user_id = current_user.id
-      new_reservation.car_id = car.id
+      new_reservation = Reservation.new(location: reservation_params[:location],
+                                        reservation_date: parsed_date)
+      new_reservation.user_id = User.find(reservation_params[:user_id]).id
+      new_reservation.car_id = Car.find(reservation_params[:car_id]).id
       if new_reservation.save
         render json: new_reservation, each_serializer: ReservationSerializer
       else
@@ -22,13 +22,20 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   def my_reservations
-    render json: current_user.reservations, each_serializer: ReservationSerializer
+    reservations = Reservation.all
+    render json: reservations, each_serializer: ReservationSerializer
+  end
+
+  def destroy
+    reservation = Reservation.find(params[:id])
+    reservation.destroy
+    render json: { message: 'Reservation deleted' }
   end
 
   private
 
   def already_reserved(parsed_date)
-    reserved = Reservation.where(model: reservation_params[:model], location: reservation_params[:location],
+    reserved = Reservation.where(location: reservation_params[:location],
                                  reservation_date: parsed_date).first
     return false if reserved.blank?
 
@@ -40,6 +47,6 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   def reservation_params
-    params.permit(:user_id, :car_id, :location, :reservation_date, :model)
+    params.permit(:user_id, :car_id, :location, :reservation_date)
   end
 end

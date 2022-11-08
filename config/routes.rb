@@ -8,7 +8,7 @@ Rails.application.routes.draw do
                   post "/add_car", to: "cars#add_car"
                   get "/show_car/:id", to: "cars#show_car"
                   post "/add_reservation", to: "reservations#add_reservation"
-                  get "/my_reservations", to: "reservations#my_reservations"
+                  get "/:user_id/my_reservations", to: "reservations#my_reservations"
                   delete "/cars/:id", to:"cars#destroy"
             end
       end
