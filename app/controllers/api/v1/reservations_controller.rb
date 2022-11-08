@@ -3,7 +3,6 @@ class API::V1::ReservationsController < ApplicationController
 
   # add a reservation
   def add_reservation
-    car = Car.where(id: reservation_params[:car_id]).first
     parsed_date = Date.parse(reservation_params[:reservation_date])
 
     if already_reserved parsed_date
