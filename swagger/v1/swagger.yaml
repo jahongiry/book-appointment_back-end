@@ -8,34 +8,9 @@ components:
     bearerAuth:
       type: http
       scheme: bearer
-paths:
-  "/api/v1/signup":
-    post:
-      summary: create user
-      tags:
-      - Users
-      parameters: []
-      responses:
-        '200':
-          description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                first_name:
-                  type: string
-                last_name:
-                  type: string
-                username:
-                  type: string
-              required:
-              - first_name
-              - last_name
-              - username
+paths: {}
 servers:
-- url: http://{defaultHost}
+- url: https://{defaultHost}
   variables:
     defaultHost:
       default: www.example.com
