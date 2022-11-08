@@ -84,23 +84,17 @@ RSpec.describe 'api/v1/cars', type: :request do
     end
   end
 
-  # path '/api/v1/cars/{id}' do
-  #   # You'll want to customize the parameter types...
-  #   parameter name: 'id', in: :path, type: :string, description: 'id'
-
-  #   delete('delete car') do
-  #     response(200, 'successful') do
-  #       let(:id) { '123' }
-
-  #       after do |example|
-  #         example.metadata[:response][:content] = {
-  #           'application/json' => {
-  #             example: JSON.parse(response.body, symbolize_names: true)
-  #           }
-  #         }
-  #       end
-  #       run_test!
-  #     end
-  #   end
-  # end
+  path '/api/v1/cars/{id}' do
+    delete('delete car') do
+    tags 'Cars'
+    produces 'application/json'
+    parameter name: 'id', in: :path, type: :integer
+      response(200, 'successful') do
+        let(:id) do
+          Car.create(name:'Audi', cost:5000, description:"the best car").id
+        end
+        run_test!
+      end
+    end
+  end
 end
