@@ -1,5 +1,5 @@
 class API::V1::CarsController < ApplicationController
-  before_action :authorize_request, only: %i[add_car destroy]
+  # before_action :authorize_request, only: %i[add_car destroy]
 
   # list all cars
   def all_cars

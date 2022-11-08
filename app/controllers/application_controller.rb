@@ -8,6 +8,7 @@ class ApplicationController < ActionController::API
   end
 
   def decoded_token
+    #Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJ1c2VyX2lkIjpudWxsfQ.9QXLOUfmUe4HKPuPayEuoc-vXdJuRQ7IOHSOjpuGpD4
     JWT.decode(token, jwt_key, true, { algorithm: 'HS256' })
   rescue StandardError => e
     [{ error: e }]
