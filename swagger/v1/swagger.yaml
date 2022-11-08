@@ -40,6 +40,64 @@ paths:
                   - "./spec/requests/api/v1/cars_spec.rb[1:1:1:1]"
                   - RSpec::ExampleGroups::ApiV1Cars::ApiV1AllCars::Get::Successful
                   - successful
+  "/api/v1/add_car":
+    post:
+      summary: add_car car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                cost:
+                  type: integer
+                description:
+                  type: string
+                owner:
+                  type: integer
+                image_url:
+                  type: string
+              required:
+              - name
+              - cost
+              - description
+              - image_url
+              - owner
+  "/api/v1/show_car/{id}":
+    get:
+      summary: show_car car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  image_url:
+                    type: string
+                  cost:
+                    type: integer
+                  description:
+                    type: string
   "/api/v1/signup":
     post:
       summary: create user
