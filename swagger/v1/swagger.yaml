@@ -9,36 +9,37 @@ components:
       type: http
       scheme: bearer
 paths:
-  "/api/v1/add_car":
-    post:
-      summary: add_car car
+  "/api/v1/all_cars":
+    get:
+      summary: all_cars car
       tags:
       - Cars
-      security:
-      - bearerAuth: []
-      parameters: []
       responses:
         '200':
           description: successful
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                name:
-                  type: string
-                cost:
-                  type: integer
-                description:
-                  type: string
-                image:
-                  type: string
-              required:
-              - name
-              - cost
-              - description
-              - image
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    cost:
+                      type: integer
+                    description:
+                      type: text
+                    image_url:
+                      type: string
+                    owner:
+                      type: integer
+                  required:
+                  - "./spec/requests/api/v1/cars_spec.rb[1:1:1:1]"
+                  - RSpec::ExampleGroups::ApiV1Cars::ApiV1AllCars::Get::Successful
+                  - successful
   "/api/v1/signup":
     post:
       summary: create user
