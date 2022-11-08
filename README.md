@@ -58,12 +58,12 @@ rspec spec
 
 ## Deployment
 
-The server was deployed on heroku, and runs on [this domain](https://stark-badlands-38572.herokuapp.com/api/v1/hotels).
+The server was deployed on heroku, and runs on [this domain](_).
 The above endpoint permits you to see all cars available for reservation. Checkout the api documentation below for the other endpoints.
 
 ## API Documentation
 
-Visit [this endpoint]() to see a complete documentation of all available endpoints for this API.
+Visit [this endpoint](http://localhost:3000/api-docs/index.html) to see a complete documentation of all available endpoints for this API.
 We hope this helps you find your way around our API.
 
 ## Authors
@@ -78,8 +78,8 @@ We hope this helps you find your way around our API.
 👤 **Emirjeta Veisllari**
 
 - GitHub: [@myelin0](https://github.com/myelin0)
-- LinkedIn: [emirjeta-veisllari](https://www.linkedin.com/in/emirjeta-veisllari/)
-- Twitter: [emirjeta-veisllari](https://www.linkedin.com/in/emirjeta-veisllari/)
+- Twitter: [@Amy_Albania](https://twitter.com/Amy_albania)
+- LinkedIn: [@Emirjeta Veisllari](https://www.linkedin.com/in/emirjeta-veisllari/)
 
 <hr>
 
@@ -103,7 +103,7 @@ We hope this helps you find your way around our API.
 
 Contributions, issues, and feature requests are welcome!
 
-Feel free to check the [issues page](../../issues/).
+Feel free to check the [issues page](https://github.com/jahongiry/book-appointment_back-end/issues).
 
 ## Show your support
 
