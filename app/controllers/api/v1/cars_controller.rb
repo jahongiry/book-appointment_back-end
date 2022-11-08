@@ -1,5 +1,4 @@
 class API::V1::CarsController < ApplicationController
-
   # list all cars
   def all_cars
     render json: Car.all.order(id: :desc), each_serializer: CarSerializer
@@ -38,7 +37,6 @@ class API::V1::CarsController < ApplicationController
   end
 
   private
-
 
   def cars_params
     params.permit(:name, :cost, :owner, :description, :image_url)
