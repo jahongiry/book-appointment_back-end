@@ -55,7 +55,7 @@ rails server
 - To run tests, Run the following command on your terminal
 
 ```
-rspec spec
+rake rswag
 ```
 
 ## Deployment
