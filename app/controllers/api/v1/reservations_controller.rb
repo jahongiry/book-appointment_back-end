@@ -21,7 +21,7 @@ class API::V1::ReservationsController < ApplicationController
   end
 
   def my_reservations
-    reservations = Reservation.all
+    reservations = current_user.reservations.all
     render json: reservations, each_serializer: ReservationSerializer
   end
 
