@@ -26,13 +26,14 @@ RSpec.configure do |config|
     bearerAuth: {        # arbitrary name for the security scheme
       type: :http,
       scheme: :bearer  ,    # can be "header", "query" or "cookie"
+      bearerFormat: JWT
     }
       }
     },
       paths: {},
       servers: [
         {
-          url: 'https://{defaultHost}',
+          url: 'http://{defaultHost}',
           variables: {
             defaultHost: {
               default: 'www.example.com'

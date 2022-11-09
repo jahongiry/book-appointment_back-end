@@ -28,4 +28,25 @@ RSpec.describe 'api/v1/reservations', type: :request do
   end
 
 
+ path '/api/v1/{user_id}/my_reservations' do
+    # You'll want to customize the parameter types...
+    get('my_reservations reservation') do
+      tags 'Reservations'
+      produces 'application/json'
+      security [bearerAuth: []]
+      parameter name: 'user_id', in: :path, type: :string, description: 'user_id'
+      response(200, 'successful') do
+        let(:Authorization) { "Bearer #{token}"}
+        schema type: :array,
+        items:{
+          type: :object,
+          properties: {
+            reservation: { type: :object }
+               }
+        }
+
+        run_test!
+      end
+    end
+  end
 end
