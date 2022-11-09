@@ -112,6 +112,29 @@ paths:
       responses:
         '200':
           description: successful
+  "/api/v1/add_reservation":
+    post:
+      summary: add_reservation reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                reservation_date:
+                  type: datetime
+                user_id:
+                  type: integer
+                car_id:
+                  type: integer
   "/api/v1/signup":
     post:
       summary: create user

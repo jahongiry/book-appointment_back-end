@@ -50,13 +50,6 @@ RSpec.describe 'api/v1/cars', type: :request do
       response(200, 'successful') do
         # let(:Authorization){"#{token}"}
           let(:car){{name:'Honda',cost: 300, description:'Nice car', owner: 6, image:'https://www.istockphoto.com/photo/pink-retro-toy-car-isolated-on-white-gm1386831709-444935852?utm_source=unsplash&utm_medium=affiliate&utm_campaign=srp_photos_top&utm_content=https%3A%2F%2Funsplash.com%2Fs%2Fphotos%2Fcars&utm_term=cars%3A%3A%3A'}}
-        # after do |example|
-        #   example.metadata[:response][:content] = {
-        #     'application/json' => {
-        #       example: JSON.parse(response.body, symbolize_names: true)
-        #     }
-        #   }
-        # end
         run_test!
       end
     end
