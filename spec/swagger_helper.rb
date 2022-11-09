@@ -1,5 +1,3 @@
-# frozen_string_literal: true
-
 require 'rails_helper'
 
 RSpec.configure do |config|
@@ -22,14 +20,14 @@ RSpec.configure do |config|
         version: 'v1'
       },
       components: {
-        securitySchemes:{
-    bearerAuth: {        # arbitrary name for the security scheme
-      type: :http,
-      scheme: :bearer  ,    # can be "header", "query" or "cookie"
-      bearerFormat: JWT
-    }
-      }
-    },
+        securitySchemes: {
+          bearerAuth: { # arbitrary name for the security scheme
+            type: :http,
+            scheme: :bearer, # can be "header", "query" or "cookie"
+            bearerFormat: JWT
+          }
+        }
+      },
       paths: {},
       servers: [
         {
