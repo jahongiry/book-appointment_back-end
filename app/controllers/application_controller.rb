@@ -4,7 +4,7 @@ class ApplicationController < ActionController::API
   end
 
   def issue_token(user)
-    "#{user.id}"
+    user.id
   end
 
   def decoded_token
