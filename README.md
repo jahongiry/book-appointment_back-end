@@ -2,6 +2,8 @@
 
 This is backend API for the **BOOK_APPOINTMENT-Front-End** UI, built with Ruby-on-Rails and Postgresql. This API manages reservations for car test runs across various locations.
 
+> ![Screenshot](screenshot.png)
+
 ## Built with
 
 - Ruby version 3.1.2
