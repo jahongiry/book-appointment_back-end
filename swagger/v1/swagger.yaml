@@ -1,0 +1,194 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+components:
+  securitySchemes:
+    bearerAuth:
+      type: http
+      scheme: bearer
+      bearerFormat: JWT
+paths:
+  "/api/v1/all_cars":
+    get:
+      summary: all_cars car
+      tags:
+      - Cars
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    id:
+                      type: integer
+                    name:
+                      type: string
+                    cost:
+                      type: integer
+                    description:
+                      type: text
+                    image_url:
+                      type: string
+                    owner:
+                      type: integer
+                  required:
+                  - "./spec/requests/api/v1/cars_spec.rb[1:1:1:1]"
+                  - RSpec::ExampleGroups::ApiV1Cars::ApiV1AllCars::Get::Successful
+                  - successful
+  "/api/v1/add_car":
+    post:
+      summary: add_car car
+      tags:
+      - Cars
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                cost:
+                  type: integer
+                description:
+                  type: string
+                owner:
+                  type: integer
+                image_url:
+                  type: string
+              required:
+              - name
+              - cost
+              - description
+              - image_url
+              - owner
+  "/api/v1/show_car/{id}":
+    get:
+      summary: show_car car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  name:
+                    type: string
+                  image_url:
+                    type: string
+                  cost:
+                    type: integer
+                  description:
+                    type: string
+  "/api/v1/cars/{id}":
+    delete:
+      summary: delete car
+      tags:
+      - Cars
+      parameters:
+      - name: id
+        in: path
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: successful
+  "/api/v1/add_reservation":
+    post:
+      summary: add_reservation reservation
+      tags:
+      - Reservations
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                location:
+                  type: string
+                reservation_date:
+                  type: datetime
+                user_id:
+                  type: integer
+                car_id:
+                  type: integer
+  "/api/v1/{user_id}/my_reservations":
+    get:
+      summary: my_reservations reservation
+      tags:
+      - Reservations
+      security:
+      - bearerAuth: []
+      parameters:
+      - name: user_id
+        in: path
+        description: user_id
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: successful
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                  properties:
+                    reservation:
+                      type: object
+  "/api/v1/signup":
+    post:
+      summary: create user
+      tags:
+      - Users
+      parameters: []
+      responses:
+        '200':
+          description: successful
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                first_name:
+                  type: string
+                last_name:
+                  type: string
+                username:
+                  type: string
+              required:
+              - first_name
+              - last_name
+              - username
+servers:
+- url: http://{defaultHost}
+  variables:
+    defaultHost:
+      default: www.example.com
