@@ -65,6 +65,10 @@ rake rswag
 
 ## Deployment
 
+[Live link fron-end](https://sensational-mochi-304065.netlify.app/)
+
+[Live link back-end](https://luxurycarapi.herokuapp.com/)
+
 The above endpoint permits you to see all cars available for reservation. Checkout the api documentation below for the other endpoints.
 
 ## API Documentation
