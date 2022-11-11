@@ -65,7 +65,6 @@ rake rswag
 
 ## Deployment
 
-The server was deployed on heroku, and runs on [this domain](_).
 The above endpoint permits you to see all cars available for reservation. Checkout the api documentation below for the other endpoints.
 
 ## API Documentation
